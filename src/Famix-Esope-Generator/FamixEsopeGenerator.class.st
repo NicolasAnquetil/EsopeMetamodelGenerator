@@ -16,7 +16,8 @@ Class {
 		'fieldAssignment',
 		'accessToDimensions',
 		'accessToPointeur',
-		'implicitPointeur'
+		'implicitPointeur',
+		'comment'
 	],
 	#category : #'Famix-Esope-Generator'
 }
@@ -134,6 +135,8 @@ FamixEsopeGenerator >> defineClasses [
 	accessToPointeur := builder newClassNamed: #AccessToPointeur comment: self commentAccesPointeur.
 
 	attribute := builder newClassNamed: #Attribute comment: self commentAttribute.
+	
+	comment := builder newClassNamed: #Comment.
 
 	fieldAssignment := builder newClassNamed: #FieldAssignment comment: self commentFieldAssignment.
 
@@ -164,6 +167,9 @@ FamixEsopeGenerator >> defineHierarchy [
 	accessToDimensions --|> utilisationSegment.		
 
 	accessToPointeur --|> utilisationSegment.
+	
+	comment --|> #TSourceEntity.
+	comment --|> #TComment.
 	
 	segact --|> utilisationSegment.
 	segadj --|> utilisationSegment.

@@ -23,6 +23,12 @@ FamixEsopeImportingContext >> importAttribute [
 ]
 
 { #category : #testing }
+FamixEsopeImportingContext >> importComment [
+	<generated>
+	^ self import: FamixEsopeComment
+]
+
+{ #category : #testing }
 FamixEsopeImportingContext >> importEntity [
 	<generated>
 	^ self import: FamixEsopeEntity
@@ -110,6 +116,12 @@ FamixEsopeImportingContext >> shouldImportAccessToPointeur [
 FamixEsopeImportingContext >> shouldImportAttribute [
 	<generated>
 	^ self shouldImport: FamixEsopeAttribute
+]
+
+{ #category : #testing }
+FamixEsopeImportingContext >> shouldImportComment [
+	<generated>
+	^ self shouldImport: FamixEsopeComment
 ]
 
 { #category : #testing }
