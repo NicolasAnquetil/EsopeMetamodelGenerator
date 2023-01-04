@@ -12,3 +12,9 @@ FamixEsopeEsoAr class >> annotation [
 	<generated>
 	^self
 ]
+
+{ #category : #'private - utility' }
+FamixEsopeEsoAr class >> newFromFortranFunction: aFortranFunction [
+
+	^ (super newFromFortranFunction: aFortranFunction) yourself
+]

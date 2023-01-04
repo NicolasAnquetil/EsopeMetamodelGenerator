@@ -35,6 +35,14 @@ FamixEsopeEntity class >> newFromFortranComment: aFortranComment [
 		  yourself
 ]
 
+{ #category : #'private - utility' }
+FamixEsopeEntity class >> newFromFortranFunction: aFortranFunction [
+
+	^ self new
+		  function: aFortranFunction;
+		  yourself
+]
+
 { #category : #testing }
 FamixEsopeEntity >> isAttribute [
 
