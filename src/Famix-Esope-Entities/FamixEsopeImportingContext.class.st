@@ -5,27 +5,9 @@ Class {
 }
 
 { #category : #testing }
-FamixEsopeImportingContext >> importAccessToDimensions [
-	<generated>
-	^ self import: FamixEsopeAccessToDimensions
-]
-
-{ #category : #testing }
-FamixEsopeImportingContext >> importAccessToPointeur [
-	<generated>
-	^ self import: FamixEsopeAccessToPointeur
-]
-
-{ #category : #testing }
 FamixEsopeImportingContext >> importAttribute [
 	<generated>
 	^ self import: FamixEsopeAttribute
-]
-
-{ #category : #testing }
-FamixEsopeImportingContext >> importComment [
-	<generated>
-	^ self import: FamixEsopeComment
 ]
 
 { #category : #testing }
@@ -35,51 +17,63 @@ FamixEsopeImportingContext >> importEntity [
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> importFieldAssignment [
+FamixEsopeImportingContext >> importEsoAr [
 	<generated>
-	^ self import: FamixEsopeFieldAssignment
+	^ self import: FamixEsopeEsoAr
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> importImplicitPointeur [
+FamixEsopeImportingContext >> importEsoAt [
 	<generated>
-	^ self import: FamixEsopeImplicitPointeur
+	^ self import: FamixEsopeEsoAt
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> importPointeur [
+FamixEsopeImportingContext >> importEsoSl [
 	<generated>
-	^ self import: FamixEsopePointeur
+	^ self import: FamixEsopeEsoSl
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> importSegAct [
+FamixEsopeImportingContext >> importEsopeFunction [
 	<generated>
-	^ self import: FamixEsopeSegAct
+	^ self import: FamixEsopeEsopeFunction
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> importSegAdj [
+FamixEsopeImportingContext >> importImplicitPointer [
 	<generated>
-	^ self import: FamixEsopeSegAdj
+	^ self import: FamixEsopeImplicitPointer
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> importSegDes [
+FamixEsopeImportingContext >> importPointerType [
 	<generated>
-	^ self import: FamixEsopeSegDes
+	^ self import: FamixEsopePointerType
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> importSegIni [
+FamixEsopeImportingContext >> importSegact [
 	<generated>
-	^ self import: FamixEsopeSegIni
+	^ self import: FamixEsopeSegact
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> importSegSup [
+FamixEsopeImportingContext >> importSegadj [
 	<generated>
-	^ self import: FamixEsopeSegSup
+	^ self import: FamixEsopeSegadj
+]
+
+{ #category : #testing }
+FamixEsopeImportingContext >> importSegdes [
+	<generated>
+	^ self import: FamixEsopeSegdes
+]
+
+{ #category : #testing }
+FamixEsopeImportingContext >> importSegini [
+	<generated>
+	^ self import: FamixEsopeSegini
 ]
 
 { #category : #testing }
@@ -89,27 +83,21 @@ FamixEsopeImportingContext >> importSegment [
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> importType [
+FamixEsopeImportingContext >> importSegmentUse [
 	<generated>
-	^ self import: FamixEsopeType
+	^ self import: FamixEsopeSegmentUse
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> importUtilisationSegment [
+FamixEsopeImportingContext >> importSegsup [
 	<generated>
-	^ self import: FamixEsopeUtilisationSegment
+	^ self import: FamixEsopeSegsup
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> shouldImportAccessToDimensions [
+FamixEsopeImportingContext >> importVariablePointeur [
 	<generated>
-	^ self shouldImport: FamixEsopeAccessToDimensions
-]
-
-{ #category : #testing }
-FamixEsopeImportingContext >> shouldImportAccessToPointeur [
-	<generated>
-	^ self shouldImport: FamixEsopeAccessToPointeur
+	^ self import: FamixEsopeVariablePointeur
 ]
 
 { #category : #testing }
@@ -119,63 +107,69 @@ FamixEsopeImportingContext >> shouldImportAttribute [
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> shouldImportComment [
-	<generated>
-	^ self shouldImport: FamixEsopeComment
-]
-
-{ #category : #testing }
 FamixEsopeImportingContext >> shouldImportEntity [
 	<generated>
 	^ self shouldImport: FamixEsopeEntity
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> shouldImportFieldAssignment [
+FamixEsopeImportingContext >> shouldImportEsoAr [
 	<generated>
-	^ self shouldImport: FamixEsopeFieldAssignment
+	^ self shouldImport: FamixEsopeEsoAr
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> shouldImportImplicitPointeur [
+FamixEsopeImportingContext >> shouldImportEsoAt [
 	<generated>
-	^ self shouldImport: FamixEsopeImplicitPointeur
+	^ self shouldImport: FamixEsopeEsoAt
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> shouldImportPointeur [
+FamixEsopeImportingContext >> shouldImportEsoSl [
 	<generated>
-	^ self shouldImport: FamixEsopePointeur
+	^ self shouldImport: FamixEsopeEsoSl
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> shouldImportSegAct [
+FamixEsopeImportingContext >> shouldImportEsopeFunction [
 	<generated>
-	^ self shouldImport: FamixEsopeSegAct
+	^ self shouldImport: FamixEsopeEsopeFunction
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> shouldImportSegAdj [
+FamixEsopeImportingContext >> shouldImportImplicitPointer [
 	<generated>
-	^ self shouldImport: FamixEsopeSegAdj
+	^ self shouldImport: FamixEsopeImplicitPointer
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> shouldImportSegDes [
+FamixEsopeImportingContext >> shouldImportPointerType [
 	<generated>
-	^ self shouldImport: FamixEsopeSegDes
+	^ self shouldImport: FamixEsopePointerType
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> shouldImportSegIni [
+FamixEsopeImportingContext >> shouldImportSegact [
 	<generated>
-	^ self shouldImport: FamixEsopeSegIni
+	^ self shouldImport: FamixEsopeSegact
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> shouldImportSegSup [
+FamixEsopeImportingContext >> shouldImportSegadj [
 	<generated>
-	^ self shouldImport: FamixEsopeSegSup
+	^ self shouldImport: FamixEsopeSegadj
+]
+
+{ #category : #testing }
+FamixEsopeImportingContext >> shouldImportSegdes [
+	<generated>
+	^ self shouldImport: FamixEsopeSegdes
+]
+
+{ #category : #testing }
+FamixEsopeImportingContext >> shouldImportSegini [
+	<generated>
+	^ self shouldImport: FamixEsopeSegini
 ]
 
 { #category : #testing }
@@ -185,13 +179,19 @@ FamixEsopeImportingContext >> shouldImportSegment [
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> shouldImportType [
+FamixEsopeImportingContext >> shouldImportSegmentUse [
 	<generated>
-	^ self shouldImport: FamixEsopeType
+	^ self shouldImport: FamixEsopeSegmentUse
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> shouldImportUtilisationSegment [
+FamixEsopeImportingContext >> shouldImportSegsup [
 	<generated>
-	^ self shouldImport: FamixEsopeUtilisationSegment
+	^ self shouldImport: FamixEsopeSegsup
+]
+
+{ #category : #testing }
+FamixEsopeImportingContext >> shouldImportVariablePointeur [
+	<generated>
+	^ self shouldImport: FamixEsopeVariablePointeur
 ]

@@ -1,14 +1,31 @@
 "
-comment for attribute
+# Attribute
+A `segment` entity is a grouping of Fortran variables defined by the programmer.
+This such of variable called `attribute`
+
+In the follow example:
+```fortran77
+c        1         2         3         4         5         6         7
+c23456789012345678901234567890123456789012345678901234567890123456789012
+c     a example of segment definition
+      segment myseg
+            integer scalar, array(size), matrix(row, col)
+            real x, xx(n)
+            real*8 Y, YY(3, MM)
+            character*nbca icha(8, ik), chai 
+      end segment
+```
+the segment `myseg` have the following attributes: `scalar`, `array`, `matrix`, `x`, `xx`, `Y`,  `YY`,  `icha`, `chai`, 
+	
+
 "
 Class {
 	#name : #FamixEsopeAttribute,
-	#superclass : #FamixEsopeEntity,
+	#superclass : #FamixEsopeVariablePointeur,
 	#traits : 'FamixTAttribute',
 	#classTraits : 'FamixTAttribute classTrait',
 	#instVars : [
-		'#segment => FMOne type: #FamixEsopeSegment opposite: #attributes',
-		'#type => FMOne type: #FamixEsopeType opposite: #attribute'
+		'#segment => FMOne type: #FamixEsopeSegment opposite: #attributes'
 	],
 	#category : #'Famix-Esope-Entities-Entities'
 }
@@ -16,7 +33,7 @@ Class {
 { #category : #meta }
 FamixEsopeAttribute class >> annotation [
 
-	<FMClass: #Attribute super: #FamixEsopeEntity>
+	<FMClass: #Attribute super: #FamixEsopeVariablePointeur>
 	<package: #'Famix-Esope-Entities'>
 	<generated>
 	^self
@@ -43,19 +60,4 @@ FamixEsopeAttribute >> segmentGroup [
 	<generated>
 	<navigation: 'Segment'>
 	^ MooseSpecializedGroup with: self segment
-]
-
-{ #category : #accessing }
-FamixEsopeAttribute >> type [
-	"Relation named: #type type: #FamixEsopeType opposite: #attribute"
-
-	<generated>
-	^ type
-]
-
-{ #category : #accessing }
-FamixEsopeAttribute >> type: anObject [
-
-	<generated>
-	type := anObject
 ]
