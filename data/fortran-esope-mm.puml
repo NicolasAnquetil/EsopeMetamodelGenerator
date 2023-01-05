@@ -1,0 +1,214 @@
+@startuml
+hide empty members
+skinparam class {
+BackgroundColor white
+ArrowColor black
+BorderColor darkGray
+BackgroundColor<<External>> LightYellow
+BorderColor<<External>> LightGray
+}
+
+class BlockData << (C,white) >> #CCFF99 {
+}
+class TProgramUnit << (T,lightGrey) >> #CCFF99 {
+}
+class ExternalProcedure << (C,white) >> #CCFF99 {
+}
+class FamixEsopeModel << (C,white) >> #CCFFFF {
+}
+class Module << (C,white) >> #CCFF99 {
+}
+class VariablePointeur << (C,white) >> #CCFFFF {
+}
+class Segsup << (C,white) >> #CCFFFF {
+}
+class SourceTextAnchor << (C,white) >> #CCFF99 {
+}
+class SourceAnchor << (C,white) >> #CCFF99 {
+}
+class Invocation << (C,white) >> #CCFF99 {
+}
+class EsoSl << (C,white) >> #CCFFFF {
+}
+class Subroutine << (C,white) >> #CCFF99 {
+}
+class Variable << (C,white) >> #CCFF99 {
+Boolean isEsope
+}
+class Segment << (C,white) >> #CCFFFF {
+}
+class Comment << (C,white) >> #CCFF99 {
+Boolean isEsope
+}
+class Segadj << (C,white) >> #CCFFFF {
+}
+class PointerType << (C,white) >> #CCFFFF {
+}
+class Segdes << (C,white) >> #CCFFFF {
+}
+class Parameter << (C,white) >> #CCFF99 {
+}
+class UnresolvedBehavioral << (C,white) >> #CCFF99 {
+}
+class EsopeFunction << (C,white) >> #CCFFFF {
+}
+class ProgramFile << (C,white) >> #CCFF99 {
+String filename
+String version
+}
+class Segact << (C,white) >> #CCFFFF {
+}
+class Attribute << (C,white) >> #CCFFFF {
+}
+class Program << (C,white) >> #CCFF99 {
+}
+class TWithProgramUnits << (T,lightGrey) >> #CCFF99 {
+}
+class ImplicitPointer << (C,white) >> #CCFFFF {
+}
+class SegmentUse << (C,white) >> #CCFFFF {
+}
+class Entity << (C,white) >> #CCFFFF {
+}
+class NamedEntity << (C,white) >> #CCFF99 {
+}
+class EsoAt << (C,white) >> #CCFFFF {
+}
+class Function << (C,white) >> #CCFF99 {
+Boolean isIntrinsic
+Boolean isEsope
+}
+class IndexedFileAnchor << (C,white) >> #CCFF99 {
+}
+class EsoAr << (C,white) >> #CCFFFF {
+}
+class Entity << (C,white) >> #CCFF99 {
+}
+class SourcedEntity << (C,white) >> #CCFF99 {
+}
+class FamixFortranModel << (C,white) >> #CCFF99 {
+}
+class UnknownSourceLanguage << (C,white) >> #CCFF99 {
+}
+class SourceLanguage << (C,white) >> #CCFF99 {
+}
+class Segini << (C,white) >> #CCFFFF {
+}
+
+Entity <|-- BlockData
+TProgramUnit <|.. BlockData
+TWithProgramUnits <|.. TProgramUnit
+TNamedEntity <|.. TProgramUnit
+TSourceEntity <|.. TProgramUnit
+TWithComments <|.. TProgramUnit
+TWithStatements <|.. TProgramUnit
+TEntityMetaLevelDependency <|.. TProgramUnit
+Entity <|-- ExternalProcedure
+TProgramUnit <|.. ExternalProcedure
+THasSignature <|.. ExternalProcedure
+TInvocable <|.. ExternalProcedure
+TWithLocalVariables <|.. ExternalProcedure
+TWithParameters <|.. ExternalProcedure
+Model <|-- FamixEsopeModel
+Entity <|-- Module
+TProgramUnit <|.. Module
+Entity <|-- VariablePointeur
+TStructuralEntity <|.. VariablePointeur
+SegmentUse <|-- Segsup
+SourceAnchor <|-- SourceTextAnchor
+THasImmediateSource <|.. SourceTextAnchor
+Entity <|-- SourceAnchor
+TSourceAnchor <|.. SourceAnchor
+Entity <|-- Invocation
+THasSignature <|.. Invocation
+TInvocation <|.. Invocation
+EsopeFunction <|-- EsoSl
+ExternalProcedure <|-- Subroutine
+Entity <|-- Variable
+TLocalVariable <|.. Variable
+Entity <|-- Segment
+TType <|.. Segment
+SourcedEntity <|-- Comment
+TComment <|.. Comment
+SegmentUse <|-- Segadj
+Entity <|-- PointerType
+TType <|.. PointerType
+SegmentUse <|-- Segdes
+Entity <|-- Parameter
+TParameter <|.. Parameter
+ExternalProcedure <|-- UnresolvedBehavioral
+Entity <|-- EsopeFunction
+TFunction <|.. EsopeFunction
+Entity <|-- ProgramFile
+TWithProgramUnits <|.. ProgramFile
+TNamedEntity <|.. ProgramFile
+TSourceEntity <|.. ProgramFile
+TEntityMetaLevelDependency <|.. ProgramFile
+SegmentUse <|-- Segact
+VariablePointeur <|-- Attribute
+TAttribute <|.. Attribute
+Entity <|-- Program
+TProgramUnit <|.. Program
+VariablePointeur <|-- ImplicitPointer
+Entity <|-- SegmentUse
+TNamedEntity <|.. SegmentUse
+Entity <|-- Entity
+Entity <|-- NamedEntity
+TNamedEntity <|.. NamedEntity
+EsopeFunction <|-- EsoAt
+ExternalProcedure <|-- Function
+TTypedEntity <|.. Function
+SourceAnchor <|-- IndexedFileAnchor
+TFileNavigation <|.. IndexedFileAnchor
+EsopeFunction <|-- EsoAr
+Entity <|-- Entity
+Entity <|-- SourcedEntity
+TSourceEntity <|.. SourcedEntity
+Model <|-- FamixFortranModel
+SourceLanguage <|-- UnknownSourceLanguage
+TUnknownSourceLanguage <|.. UnknownSourceLanguage
+Entity <|-- SourceLanguage
+TSourceLanguage <|.. SourceLanguage
+SegmentUse <|-- Segini
+
+TProgramUnit " *programUnits" --o "container" TWithProgramUnits
+Comment "comment" -- "pointerType" PointerType
+Comment "comment" -- "segmentUse" SegmentUse
+Comment "comment" -- "segment" Segment
+PointerType " *pointerTypes" -- "segment" Segment
+EsopeFunction "esopeFunction" -- "pointerType" PointerType
+EsopeFunction "esopeFunction" -- "function" Function
+Attribute " *attributes" --o "segment" Segment
+SegmentUse "segmentUse" -- "variablePointeur" VariablePointeur
+
+class TSourceAnchor <<(T,LightYellow)External>>
+class TWithParameters <<(T,LightYellow)External>>
+class TWithComments <<(T,LightYellow)External>>
+class TType <<(T,LightYellow)External>>
+class Entity <<(C,LightYellow)External>>
+class TSourceLanguage <<(T,LightYellow)External>>
+class TTypedEntity <<(T,LightYellow)External>>
+class Model <<(C,LightYellow)External>>
+class TParameter <<(T,LightYellow)External>>
+class TFileNavigation <<(T,LightYellow)External>>
+class TWithStatements <<(T,LightYellow)External>>
+class TInvocable <<(T,LightYellow)External>>
+class TWithLocalVariables <<(T,LightYellow)External>>
+class TNamedEntity <<(T,LightYellow)External>>
+class TFunction <<(T,LightYellow)External>>
+class TInvocation <<(T,LightYellow)External>>
+class THasSignature <<(T,LightYellow)External>>
+class TComment <<(T,LightYellow)External>>
+class THasImmediateSource <<(T,LightYellow)External>>
+class TLocalVariable <<(T,LightYellow)External>>
+class TEntityMetaLevelDependency <<(T,LightYellow)External>>
+class TStructuralEntity <<(T,LightYellow)External>>
+class TUnknownSourceLanguage <<(T,LightYellow)External>>
+class TSourceEntity <<(T,LightYellow)External>>
+class TAttribute <<(T,LightYellow)External>>
+
+hide FamixFortranModel
+hide FamixEsopeModel
+hide Model
+
+@enduml
