@@ -4,25 +4,28 @@ skinparam monochrome true
 
 left to right direction
 
-hide circle
 hide members
 
 class File
+class ProgramUnit
 class Module
 class Program
 class Variable
-class SubProgram
+abstract class SubProgram
 class Parameter
 class Function
 class Subroutine
 class Body
 class Access
 class Invocation
+class Comment
 
 File "*" <-- File : include
-File  *-- "*"  Module
-File  *-- "*" SubProgram
-File  *-- "0..1" Program
+File *-- "*" ProgramUnit
+ProgramUnit  <|-- Module
+ProgramUnit  <|-- SubProgram
+ProgramUnit  <|-- Program
+ProgramUnit *-- "*" Comment
 
 Module "*" <-- Module : use
 Module <-- Program : use
