@@ -1,4 +1,4 @@
 # EsopeMetamodelGenerator
 Esope Metamodel
 
-![plantuml](./plantuml.svg)
+![plantuml](./data/fortran-esope-mm.svg)
