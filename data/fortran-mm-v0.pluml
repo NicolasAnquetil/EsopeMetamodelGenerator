@@ -1,0 +1,71 @@
+@startuml
+
+skinparam monochrome true
+
+left to right direction
+
+hide members
+
+class BlockData
+class Comment
+class Function
+class Module
+class Parameter
+class Program
+class ProgramFile
+'class ProgramUnit
+interface TProgramUnit
+interface TWithProgramUnits
+abstract SubProgram
+class Subroutine
+class UnresolvedBehavioral
+class Variable
+
+BlockData --|> TProgramUnit
+
+SubProgram --|> TProgramUnit
+'SubProgram --|> TInvocable
+'SubProgram --|> THasSignature
+'SubProgram --|> TWithParameters
+'SubProgram --|> TWithLocalVariables
+
+Function --|> SubProgram
+'Function --|> TTypedEntity
+'IndexedFileAnchor --|> SourceAnchor
+'IndexedFileAnchor --|> TFileNavigation
+
+'Invocation --|> TInvocation
+'Invocation --|> THasSignature
+
+Module --|> TProgramUnit
+
+'Parameter --|> TParameter
+
+Program --|> TProgramUnit
+
+'ProgramFile --|> TNamedEntity
+'ProgramFile --|> TSourceEntity
+'ProgramFile --|> TEntityMetaLevelDependency
+ProgramFile --|> TWithProgramUnits
+
+Subroutine --|> SubProgram
+
+'TProgramUnit --|> TWithStatements
+'TProgramUnit --|> TSourceEntity
+'TProgramUnit --|> TWithComments
+'TProgramUnit --|> TEntityMetaLevelDependency
+'TProgramUnit --|> TNamedEntity
+TProgramUnit --|> TWithProgramUnits
+
+UnresolvedBehavioral --|> SubProgram
+	
+'Variable --|> TLocalVariable
+
+
+TWithProgramUnits *-- "*" TProgramUnit
+TProgramUnit *-- "*" Comment
+SubProgram *-- "*" Variable
+TProgramUnit *-- "*" Parameter
+
+@enduml
+

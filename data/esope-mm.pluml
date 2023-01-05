@@ -1,0 +1,64 @@
+@startuml
+
+skinparam monochrome true
+
+left to right direction
+
+hide members
+
+class FortranComment
+class FortranFunction
+class EsopeEntity
+abstract EsopeFunction
+class Segment
+class Attribute
+class EsoAt
+class EsoAr
+class EsoSl
+abstract SegmentUse
+class SegIni
+class SegAct
+class SegDes
+class SegSup
+class SegAdj
+class ImplicitPointerVar
+class PointerType
+class Variable
+interface TType
+interface TFunction
+interface TStructuralEntity
+
+EsopeEntity -- FortranComment
+EsopeEntity -- FortranFunction
+EsopeEntity -- Variable
+
+FortranFunction ..|> TFunction
+EsopeFunction ..|> TFunction
+
+EsopeFunction --|> EsopeEntity
+EsoAt --|> EsopeFunction
+EsoAr --|> EsopeFunction
+EsoSl --|> EsopeFunction
+
+Segment --|> EsopeEntity
+
+Segment *-- "*" Attribute
+Segment -- "*" PointerType: pointe
+Segment ..|> TType
+
+Attribute --|> Variable
+Variable ..|> TStructuralEntity
+ImplicitPointerVar --|> Variable
+
+Variable -- SegmentUse
+
+SegAct --|> SegmentUse
+SegAdj --|> SegmentUse
+SegDes --|> SegmentUse
+SegIni --|> SegmentUse
+SegSup --|> SegmentUse
+
+
+
+@enduml
+
