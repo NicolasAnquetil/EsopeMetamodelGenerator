@@ -14,10 +14,16 @@ FamixEsopeEntity class >> annotation [
 ]
 
 { #category : #'private - utility' }
+FamixEsopeEntity class >> getNameFrom: anEntity [
+
+	self subclassResponsibility
+]
+
+{ #category : #'private - utility' }
 FamixEsopeEntity class >> getNameFrom: aFortranComment without: aPrefix [
 
-	^ ((aFortranComment removePrefix: 'eso') trim removePrefix: aPrefix)
-		  trim removePrefix: ','
+	^ (((aFortranComment removePrefix: #eso) trim removePrefix: aPrefix)
+		  trim removePrefix: ',') trim
 ]
 
 { #category : #meta }
@@ -27,11 +33,17 @@ FamixEsopeEntity class >> metamodel [
 	^ FamixEsopeModel metamodel
 ]
 
+{ #category : #'private - utility' }
+FamixEsopeEntity class >> newEntity: anEntity [
+
+	self subclassResponsibility
+]
+
 { #category : #meta }
 FamixEsopeEntity class >> newFromFortranComment: aFortranComment [
 1halt.
 	^ self new
-		  comment: aFortranComment;
+		  content: aFortranComment;
 		  yourself
 ]
 

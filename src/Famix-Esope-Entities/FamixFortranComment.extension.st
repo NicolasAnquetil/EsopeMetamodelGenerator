@@ -1,26 +1,26 @@
 Extension { #name : #FamixFortranComment }
 
 { #category : #'*Famix-Esope-Entities-accessing' }
-FamixFortranComment >> pointerType [
-	"Relation named: #pointerType type: #FamixEsopePointerType opposite: #comment"
+FamixFortranComment >> pointer [
+	"Relation named: #pointer type: #FamixEsopePointer opposite: #comment"
 
 	<generated>
-	<FMProperty: #pointerType type: #FamixEsopePointerType opposite: #comment>
+	<FMProperty: #pointer type: #FamixEsopePointer opposite: #comment>
 	<package: #'Famix-Esope-Entities'>
-	^ self attributeAt: #pointerType ifAbsent: [ nil ]
+	^ self attributeAt: #pointer ifAbsent: [ nil ]
 ]
 
 { #category : #'*Famix-Esope-Entities-accessing' }
-FamixFortranComment >> pointerType: anObject [
+FamixFortranComment >> pointer: anObject [
 
 	<generated>
-	(self attributeAt: #pointerType ifAbsentPut: [nil]) == anObject ifTrue: [ ^ anObject ].
+	(self attributeAt: #pointer ifAbsentPut: [nil]) == anObject ifTrue: [ ^ anObject ].
 	anObject ifNil: [ | otherSide |
-		otherSide :=  self pointerType.
-		self attributeAt: #pointerType put: anObject.
+		otherSide :=  self pointer.
+		self attributeAt: #pointer put: anObject.
 		otherSide comment: nil ]
 	ifNotNil: [ 
-		self attributeAt: #pointerType put: anObject.
+		self attributeAt: #pointer put: anObject.
 		anObject comment: self ]
 ]
 
@@ -69,5 +69,29 @@ FamixFortranComment >> segmentUse: anObject [
 		otherSide comment: nil ]
 	ifNotNil: [ 
 		self attributeAt: #segmentUse put: anObject.
+		anObject comment: self ]
+]
+
+{ #category : #'*Famix-Esope-Entities-accessing' }
+FamixFortranComment >> unknown [
+	"Relation named: #unknown type: #FamixEsopeUnknown opposite: #comment"
+
+	<generated>
+	<FMProperty: #unknown type: #FamixEsopeUnknown opposite: #comment>
+	<package: #'Famix-Esope-Entities'>
+	^ self attributeAt: #unknown ifAbsent: [ nil ]
+]
+
+{ #category : #'*Famix-Esope-Entities-accessing' }
+FamixFortranComment >> unknown: anObject [
+
+	<generated>
+	(self attributeAt: #unknown ifAbsentPut: [nil]) == anObject ifTrue: [ ^ anObject ].
+	anObject ifNil: [ | otherSide |
+		otherSide :=  self unknown.
+		self attributeAt: #unknown put: anObject.
+		otherSide comment: nil ]
+	ifNotNil: [ 
+		self attributeAt: #unknown put: anObject.
 		anObject comment: self ]
 ]

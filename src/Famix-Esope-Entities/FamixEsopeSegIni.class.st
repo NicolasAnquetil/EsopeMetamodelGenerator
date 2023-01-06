@@ -88,9 +88,8 @@ FamixEsopeSegini class >> annotation [
 ]
 
 { #category : #'instance creation' }
-FamixEsopeSegini class >> newFromFortranComment: aFortranComment [
+FamixEsopeSegini class >> getNameFrom: anEntity [
 
-	^ (super newFromFortranComment: aFortranComment)
-		  name: (self getNameFrom: aFortranComment content without: #segini);
-		  yourself
+	^ (((anEntity removePrefix: #eso) trim removePrefix: #segini)
+		  trim removePrefix: ',') trim
 ]

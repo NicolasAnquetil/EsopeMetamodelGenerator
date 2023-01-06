@@ -22,10 +22,9 @@ FamixEsopeSegdes class >> annotation [
 	^self
 ]
 
-{ #category : #'instance creation' }
-FamixEsopeSegdes class >> newFromFortranComment: aFortranComment [
+{ #category : #meta }
+FamixEsopeSegdes class >> getNameFrom: anEntity [
 
-	^ (super newFromFortranComment: aFortranComment)
-		  name: (self getNameFrom: aFortranComment content without: #segdes);
-		  yourself
+	^ (((anEntity removePrefix: #eso) trim removePrefix: #segdes)
+		  trim removePrefix: ',') trim
 ]

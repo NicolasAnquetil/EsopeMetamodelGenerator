@@ -21,7 +21,7 @@ the segment `myseg` have the following attributes: `scalar`, `array`, `matrix`, 
 "
 Class {
 	#name : #FamixEsopeAttribute,
-	#superclass : #FamixEsopeVariablePointeur,
+	#superclass : #FamixEsopeFortranVariable,
 	#traits : 'FamixTAttribute',
 	#classTraits : 'FamixTAttribute classTrait',
 	#instVars : [
@@ -33,7 +33,7 @@ Class {
 { #category : #meta }
 FamixEsopeAttribute class >> annotation [
 
-	<FMClass: #Attribute super: #FamixEsopeVariablePointeur>
+	<FMClass: #Attribute super: #FamixEsopeFortranVariable>
 	<package: #'Famix-Esope-Entities'>
 	<generated>
 	^self

@@ -55,9 +55,8 @@ FamixEsopeSegsup class >> annotation [
 ]
 
 { #category : #'instance creation' }
-FamixEsopeSegsup class >> newFromFortranComment: aFortranComment [
+FamixEsopeSegsup class >> getNameFrom: anEntity [
 
-	^ (super newFromFortranComment: aFortranComment)
-		  name: (self getNameFrom: aFortranComment content without: #segsup);
-		  yourself
+	^ (((anEntity removePrefix: #eso) trim removePrefix: #segsup)
+		  trim removePrefix: ',') trim
 ]

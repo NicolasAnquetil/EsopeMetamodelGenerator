@@ -16,85 +16,91 @@ The creation of a myseg class structure is done by calling `segini` function and
 
 "
 Class {
-	#name : #FamixEsopePointerType,
-	#superclass : #FamixEsopeEntity,
-	#traits : 'FamixTType',
-	#classTraits : 'FamixTType classTrait',
+	#name : #FamixEsopePointer,
+	#superclass : #FamixEsopeFortranVariable,
 	#instVars : [
-		'#esopeFunction => FMOne type: #FamixEsopeEsopeFunction opposite: #pointerType',
-		'#segment => FMOne type: #FamixEsopeSegment opposite: #pointerTypes'
+		'#segment => FMOne type: #FamixEsopeSegment opposite: #pointers',
+		'#segmentUse => FMOne type: #FamixEsopeSegmentUse opposite: #pointer'
 	],
 	#category : #'Famix-Esope-Entities-Entities'
 }
 
 { #category : #meta }
-FamixEsopePointerType class >> annotation [
+FamixEsopePointer class >> annotation [
 
-	<FMClass: #PointerType super: #FamixEsopeEntity>
+	<FMClass: #Pointer super: #FamixEsopeFortranVariable>
 	<package: #'Famix-Esope-Entities'>
 	<generated>
 	^self
 ]
 
-{ #category : #meta }
-FamixEsopePointerType class >> newFromFortranComment: aFortranComment [
+{ #category : #'private - utility' }
+FamixEsopePointer class >> getNameFrom: anEntity [
 
-	^ (super newFromFortranComment: aFortranComment) 
-		 name: (self getNameFrom: aFortranComment content without: #pointeur);
-		  yourself
+	^ (((anEntity removePrefix: #eso) trim removePrefix: #pointeur)
+		  trim removePrefix: ',') trim
+]
+
+{ #category : #'private - utility' }
+FamixEsopePointer class >> newEntity: anEntity [
+
+	self new
+		comment: anEntity;
+		mooseModel: anEntity mooseModel;
+		name: (self getNameFrom: anEntity content)
 ]
 
 { #category : #accessing }
-FamixEsopePointerType >> comment [
-	"Relation named: #comment type: #FamixFortranComment opposite: #pointerType"
+FamixEsopePointer >> comment [
+	"Relation named: #comment type: #FamixFortranComment opposite: #pointer"
 
 	<generated>
 	<derived>
-	<FMProperty: #comment type: #FamixFortranComment opposite: #pointerType>
+	<FMProperty: #comment type: #FamixFortranComment opposite: #pointer>
 	^ self attributeAt: #comment ifAbsent: [ nil ]
 ]
 
 { #category : #accessing }
-FamixEsopePointerType >> comment: anObject [
+FamixEsopePointer >> comment: anObject [
 
 	<generated>
 	(self attributeAt: #comment ifAbsentPut: [nil]) == anObject ifTrue: [ ^ anObject ].
 	anObject ifNil: [ | otherSide |
 		otherSide :=  self comment.
 		self attributeAt: #comment put: anObject.
-		otherSide pointerType: nil ]
+		otherSide pointer: nil ]
 	ifNotNil: [ 
 		self attributeAt: #comment put: anObject.
-		anObject pointerType: self ]
+		anObject pointer: self ]
 ]
 
 { #category : #accessing }
-FamixEsopePointerType >> esopeFunction [
-	"Relation named: #esopeFunction type: #FamixEsopeEsopeFunction opposite: #pointerType"
-
-	<generated>
-	<derived>
-	^ esopeFunction
-]
-
-{ #category : #accessing }
-FamixEsopePointerType >> esopeFunction: anObject [
-
-	<generated>
-	esopeFunction := anObject
-]
-
-{ #category : #accessing }
-FamixEsopePointerType >> segment [
-	"Relation named: #segment type: #FamixEsopeSegment opposite: #pointerTypes"
+FamixEsopePointer >> segment [
+	"Relation named: #segment type: #FamixEsopeSegment opposite: #pointers"
 
 	<generated>
 	^ segment
 ]
 
 { #category : #accessing }
-FamixEsopePointerType >> segment: anObject [
+FamixEsopePointer >> segment: anObject [
 
 	<generated>
 	segment := anObject
+]
+
+{ #category : #accessing }
+FamixEsopePointer >> segmentUse [
+	"Relation named: #segmentUse type: #FamixEsopeSegmentUse opposite: #pointer"
+
+	<generated>
+	<derived>
+	^ segmentUse
+]
+
+{ #category : #accessing }
+FamixEsopePointer >> segmentUse: anObject [
+
+	<generated>
+	segmentUse := anObject
 ]

@@ -6,9 +6,6 @@ Class {
 	#superclass : #FamixEsopeEntity,
 	#traits : 'FamixTFunction',
 	#classTraits : 'FamixTFunction classTrait',
-	#instVars : [
-		'#pointerType => FMOne type: #FamixEsopePointerType opposite: #esopeFunction'
-	],
 	#category : #'Famix-Esope-Entities-Entities'
 }
 
@@ -19,6 +16,14 @@ FamixEsopeEsopeFunction class >> annotation [
 	<package: #'Famix-Esope-Entities'>
 	<generated>
 	^self
+]
+
+{ #category : #'private - utility' }
+FamixEsopeEsopeFunction class >> newEntity: anEntity [
+
+	^ self new
+		  function: anEntity;
+		  mooseModel: anEntity mooseModel
 ]
 
 { #category : #accessing }
@@ -42,19 +47,4 @@ FamixEsopeEsopeFunction >> function: anObject [
 	ifNotNil: [ 
 		self attributeAt: #function put: anObject.
 		anObject esopeFunction: self ]
-]
-
-{ #category : #accessing }
-FamixEsopeEsopeFunction >> pointerType [
-	"Relation named: #pointerType type: #FamixEsopePointerType opposite: #esopeFunction"
-
-	<generated>
-	^ pointerType
-]
-
-{ #category : #accessing }
-FamixEsopeEsopeFunction >> pointerType: anObject [
-
-	<generated>
-	pointerType := anObject
 ]

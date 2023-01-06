@@ -41,15 +41,21 @@ FamixEsopeImportingContext >> importEsopeFunction [
 ]
 
 { #category : #testing }
+FamixEsopeImportingContext >> importFortranVariable [
+	<generated>
+	^ self import: FamixEsopeFortranVariable
+]
+
+{ #category : #testing }
 FamixEsopeImportingContext >> importImplicitPointer [
 	<generated>
 	^ self import: FamixEsopeImplicitPointer
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> importPointerType [
+FamixEsopeImportingContext >> importPointer [
 	<generated>
-	^ self import: FamixEsopePointerType
+	^ self import: FamixEsopePointer
 ]
 
 { #category : #testing }
@@ -95,9 +101,9 @@ FamixEsopeImportingContext >> importSegsup [
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> importVariablePointeur [
+FamixEsopeImportingContext >> importUnknown [
 	<generated>
-	^ self import: FamixEsopeVariablePointeur
+	^ self import: FamixEsopeUnknown
 ]
 
 { #category : #testing }
@@ -137,15 +143,21 @@ FamixEsopeImportingContext >> shouldImportEsopeFunction [
 ]
 
 { #category : #testing }
+FamixEsopeImportingContext >> shouldImportFortranVariable [
+	<generated>
+	^ self shouldImport: FamixEsopeFortranVariable
+]
+
+{ #category : #testing }
 FamixEsopeImportingContext >> shouldImportImplicitPointer [
 	<generated>
 	^ self shouldImport: FamixEsopeImplicitPointer
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> shouldImportPointerType [
+FamixEsopeImportingContext >> shouldImportPointer [
 	<generated>
-	^ self shouldImport: FamixEsopePointerType
+	^ self shouldImport: FamixEsopePointer
 ]
 
 { #category : #testing }
@@ -191,7 +203,7 @@ FamixEsopeImportingContext >> shouldImportSegsup [
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> shouldImportVariablePointeur [
+FamixEsopeImportingContext >> shouldImportUnknown [
 	<generated>
-	^ self shouldImport: FamixEsopeVariablePointeur
+	^ self shouldImport: FamixEsopeUnknown
 ]

@@ -18,7 +18,7 @@ Class {
 	#traits : 'FamixTNamedEntity',
 	#classTraits : 'FamixTNamedEntity classTrait',
 	#instVars : [
-		'#variablePointeur => FMOne type: #FamixEsopeVariablePointeur opposite: #segmentUse'
+		'#pointer => FMOne type: #FamixEsopePointer opposite: #segmentUse'
 	],
 	#category : #'Famix-Esope-Entities-Entities'
 }
@@ -30,6 +30,19 @@ FamixEsopeSegmentUse class >> annotation [
 	<package: #'Famix-Esope-Entities'>
 	<generated>
 	^self
+]
+
+{ #category : #'instance creation' }
+FamixEsopeSegmentUse class >> newEntity: aFortranComment [
+
+	^ self new
+		  pointer: (FamixEsopePointer new
+				   mooseModel: aFortranComment mooseModel;
+					name: (self getNameFrom: aFortranComment content);
+				   yourself);
+		  comment: aFortranComment;
+		  mooseModel: aFortranComment mooseModel;
+		  yourself
 ]
 
 { #category : #accessing }
@@ -57,16 +70,16 @@ FamixEsopeSegmentUse >> comment: anObject [
 ]
 
 { #category : #accessing }
-FamixEsopeSegmentUse >> variablePointeur [
-	"Relation named: #variablePointeur type: #FamixEsopeVariablePointeur opposite: #segmentUse"
+FamixEsopeSegmentUse >> pointer [
+	"Relation named: #pointer type: #FamixEsopePointer opposite: #segmentUse"
 
 	<generated>
-	^ variablePointeur
+	^ pointer
 ]
 
 { #category : #accessing }
-FamixEsopeSegmentUse >> variablePointeur: anObject [
+FamixEsopeSegmentUse >> pointer: anObject [
 
 	<generated>
-	variablePointeur := anObject
+	pointer := anObject
 ]

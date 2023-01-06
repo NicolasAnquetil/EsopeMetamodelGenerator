@@ -92,10 +92,9 @@ FamixEsopeSegact class >> annotation [
 	^self
 ]
 
-{ #category : #'instance creation' }
-FamixEsopeSegact class >> newFromFortranComment: aFortranComment [
+{ #category : #'private - utility' }
+FamixEsopeSegact class >> getNameFrom: anEntity [
 
-	^ (super newFromFortranComment: aFortranComment)
-		  name: (self getNameFrom: aFortranComment content without: #segact);
-		  yourself
+	^ (((anEntity removePrefix: #eso) trim removePrefix: #segact)
+		  trim removePrefix: ',') trim
 ]

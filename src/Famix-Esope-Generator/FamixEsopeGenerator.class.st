@@ -12,7 +12,6 @@ Class {
 		'attribute',
 		'accesPointeur',
 		'accessToDimensions',
-		'comment',
 		'accessToPointer',
 		'implicitPointer',
 		'segmentUse',
@@ -21,9 +20,11 @@ Class {
 		'esoar',
 		'esosl',
 		'esopeFunction',
-		'pointerType',
-		'variablePointer',
-		'function'
+		'function',
+		'pointer',
+		'fortranComment',
+		'fortranVariable',
+		'unknown'
 	],
 	#category : #'Famix-Esope-Generator'
 }
@@ -96,12 +97,18 @@ FamixEsopeGenerator >> commentEsopeEntity [
 ]
 
 { #category : #comment }
+FamixEsopeGenerator >> commentFortranVariable [
+
+	^ 'comment for name of variable pointer'
+]
+
+{ #category : #comment }
 FamixEsopeGenerator >> commentImplicitPointer [
 	^ ''
 ]
 
 { #category : #comment }
-FamixEsopeGenerator >> commentPointerType [
+FamixEsopeGenerator >> commentPointer [
 
 	^ '# Creating and initializing a SEGMENT:
 Let''s place ourselves again inside a fortran subprogram. 
@@ -420,9 +427,9 @@ FamixEsopeGenerator >> commentType [
 ]
 
 { #category : #comment }
-FamixEsopeGenerator >> commentVariablePointer [
+FamixEsopeGenerator >> commentUnknown [
 
-	^ 'comment for name of variable pointer'
+	^ 'This entity do not exist or wrongly processed'
 ]
 
 { #category : #definition }
@@ -443,7 +450,13 @@ FamixEsopeGenerator >> defineClasses [
 	esosl := builder newClassNamed: #EsoSl.
 
 	"comment := builder newClassNamed: #Comment."
-	comment := self remoteEntity: #Comment withPrefix: #FamixFortran.
+	fortranComment := self
+		                  remoteEntity: #Comment
+		                  withPrefix: #FamixFortran.
+
+	fortranVariable := builder
+		                   newClassNamed: #FortranVariable
+		                   comment: self commentFortranVariable.
 
 	function := self remoteEntity: #Function withPrefix: #FamixFortran.
 
@@ -451,9 +464,9 @@ FamixEsopeGenerator >> defineClasses [
 		                   newClassNamed: #ImplicitPointer
 		                   comment: self commentImplicitPointer.
 
-	pointerType := builder
-		               newClassNamed: #PointerType
-		               comment: self commentPointerType.
+	pointer := builder
+		           newClassNamed: #Pointer
+		           comment: self commentPointer.
 
 	segadj := builder newClassNamed: #Segadj comment: self commentSegadj.
 	segact := builder newClassNamed: #Segact comment: self commentSegact.
@@ -471,9 +484,9 @@ FamixEsopeGenerator >> defineClasses [
 
 	"type := builder newClassNamed: #Type comment: self commentType."
 
-	variablePointer := builder
-		                   newClassNamed: #VariablePointeur
-		                   comment: self commentVariablePointer
+	unknown := builder
+		           newClassNamed: #Unknown
+		           comment: self commentUnknown
 ]
 
 { #category : #definition }
@@ -482,7 +495,7 @@ FamixEsopeGenerator >> defineHierarchy [
 	super defineHierarchy.
 
 	attribute --|> #TAttribute.
-	attribute --|> variablePointer.
+	attribute --|> fortranVariable.
 
 	esoar --|> esopeFunction.
 	esoat --|> esopeFunction.
@@ -490,9 +503,10 @@ FamixEsopeGenerator >> defineHierarchy [
 	
 	esopeFunction --|> #TFunction.
 	
-	implicitPointer --|> variablePointer.
+	implicitPointer --|> fortranVariable.
 	
-	pointerType --|> #TType.
+	"pointer --|> #TType."
+	pointer --|> fortranVariable.
 
 	segact --|> segmentUse.
 
@@ -508,7 +522,7 @@ FamixEsopeGenerator >> defineHierarchy [
 
 	segmentUse --|> #TNamedEntity.
 	
-	variablePointer --|> #TStructuralEntity.
+	fortranVariable --|> #TStructuralEntity.
 ]
 
 { #category : #definition }
@@ -517,28 +531,23 @@ FamixEsopeGenerator >> defineProperties [
 ]
 
 { #category : #definition }
-FamixEsopeGenerator >> defineRelations [ 
+FamixEsopeGenerator >> defineRelations [
+
 	super defineRelations.
-	
-	comment - segment.
-	comment - segmentUse.
-	comment - pointerType.
-	"comment - attribute. self flag: #FIXME. ""this is not relevant in my opinion."""
-	
-	esopeFunction - pointerType.
-	
+
+	fortranComment - unknown.
+
+	fortranComment - pointer.
+	fortranComment - segment.
+	fortranComment - segmentUse.
+
 	esopeFunction - function.
-	
-	segment -* pointerType.
+
+	segment -* pointer.
 
 	segment <>-* attribute.
-	
-	segmentUse - variablePointer.
-	
-	
-	
 
-
+	segmentUse - pointer
 ]
 
 { #category : #definition }

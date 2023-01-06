@@ -28,7 +28,7 @@ Class {
 	#classTraits : 'FamixTType classTrait',
 	#instVars : [
 		'#attributes => FMMany type: #FamixEsopeAttribute opposite: #segment',
-		'#pointerTypes => FMMany type: #FamixEsopePointerType opposite: #segment'
+		'#pointers => FMMany type: #FamixEsopePointer opposite: #segment'
 	],
 	#category : #'Famix-Esope-Entities-Entities'
 }
@@ -40,6 +40,28 @@ FamixEsopeSegment class >> annotation [
 	<package: #'Famix-Esope-Entities'>
 	<generated>
 	^self
+]
+
+{ #category : #'private - utility' }
+FamixEsopeSegment class >> getNameFrom: anEntity [
+
+	^ (((anEntity removePrefix: #eso) trim removePrefix: #segment)
+		  trim removePrefix: ',') trim
+]
+
+{ #category : #'private - utility' }
+FamixEsopeSegment class >> newEntity: anEntity [
+
+	| aSegment |
+
+	aSegment := self new
+		            comment: anEntity;
+		            mooseModel: anEntity mooseModel;
+		            name: (self getNameFrom: anEntity content lines first);
+		            yourself.
+
+	aSegment addAttributes: anEntity.
+	^ aSegment
 ]
 
 { #category : #meta }
@@ -56,10 +78,23 @@ FamixEsopeSegment >> addAttribute: anObject [
 	^ self attributes add: anObject
 ]
 
+{ #category : #meta }
+FamixEsopeSegment >> addAttributes: anEntity [
+
+	| content |
+	content := anEntity content lines.
+
+	(content sliceFrom: 2 to: content size - 1) do: [ :a | 
+		self
+			addAttribute:
+				(FamixEsopeAttribute new mooseModel: anEntity mooseModel; name: (' ' split: a) last);
+			yourself ]
+]
+
 { #category : #adding }
-FamixEsopeSegment >> addPointerType: anObject [
+FamixEsopeSegment >> addPointer: anObject [
 	<generated>
-	^ self pointerTypes add: anObject
+	^ self pointers add: anObject
 ]
 
 { #category : #accessing }
@@ -110,17 +145,17 @@ FamixEsopeSegment >> comment: anObject [
 ]
 
 { #category : #accessing }
-FamixEsopeSegment >> pointerTypes [
-	"Relation named: #pointerTypes type: #FamixEsopePointerType opposite: #segment"
+FamixEsopeSegment >> pointers [
+	"Relation named: #pointers type: #FamixEsopePointer opposite: #segment"
 
 	<generated>
 	<derived>
-	^ pointerTypes
+	^ pointers
 ]
 
 { #category : #accessing }
-FamixEsopeSegment >> pointerTypes: anObject [
+FamixEsopeSegment >> pointers: anObject [
 
 	<generated>
-	pointerTypes value: anObject
+	pointers value: anObject
 ]
