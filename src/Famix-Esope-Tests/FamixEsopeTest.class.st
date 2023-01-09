@@ -65,6 +65,83 @@ eso  endsegment
 ]
 
 { #category : #tests }
+FamixEsopeTest >> testEsoAr [
+
+	| esopeFunc fortranFunc |
+	fortranFunc := FamixFortranFunction new
+		               isEsope: true;
+		               name: 'esoar';
+		               mooseModel: model;
+		               yourself.
+
+	esopeFunc := FamixEsopeEsoAt new
+		             function: fortranFunc;
+		             name: fortranFunc name;
+		             mooseModel: model;
+		             yourself.
+
+	self assert: esopeFunc name equals: fortranFunc name.
+	self assert: esopeFunc function equals: fortranFunc
+]
+
+{ #category : #tests }
+FamixEsopeTest >> testEsoAt [
+
+	| esopeFunc fortranFunc |
+	fortranFunc := FamixFortranFunction new
+		               isEsope: true;
+		               name: 'esoat';
+		               mooseModel: model;
+		               yourself.
+
+	esopeFunc := FamixEsopeEsoAt new
+		             function: fortranFunc;
+		             name: fortranFunc name;
+		             mooseModel: model;
+		             yourself.
+
+	self assert: esopeFunc name equals: fortranFunc name.
+	self assert: esopeFunc function equals: fortranFunc
+]
+
+{ #category : #tests }
+FamixEsopeTest >> testEsoSl [
+
+	| esopeFunc fortranFunc parameters |
+	"Esosl(abc, def)"
+	parameters := { 
+		              (FamixFortranParameter new
+			               name: 'abc';
+			               yourself).
+		              (FamixFortranParameter new
+			               name: 'def';
+			               yourself) }.
+
+
+	fortranFunc := FamixFortranFunction new
+		               isEsope: true;
+		               parameters: parameters;
+		               name: 'esosl';
+		               mooseModel: model;
+		               yourself.
+
+	esopeFunc := FamixEsopeEsoAt new
+		             function: fortranFunc;
+		             name: fortranFunc name;
+		             mooseModel: model;
+		             yourself.
+
+	self assert: esopeFunc name equals: fortranFunc name.
+	self assert: esopeFunc function equals: fortranFunc.
+	self
+		assert: esopeFunc function parameters first
+		equals: parameters first.
+	self
+		assert: esopeFunc function parameters last
+		equals: parameters last
+]
+
+{ #category : #tests }
 FamixEsopeTest >> testNewEntity [
 
 	| result |
