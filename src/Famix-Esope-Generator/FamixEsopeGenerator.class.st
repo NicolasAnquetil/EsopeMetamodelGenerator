@@ -89,17 +89,17 @@ FamixEsopeGenerator >> commentEsoTransformation [
 	^ 'Comment for abstract class EsopeFunction parent of EsoAt, EsoAr, EsoSl'
 ]
 
-{ #category : #definition }
+{ #category : #comment }
 FamixEsopeGenerator >> commentEsoar [
 	^''
 ]
 
-{ #category : #definition }
+{ #category : #comment }
 FamixEsopeGenerator >> commentEsoat [
 	^''
 ]
 
-{ #category : #definition }
+{ #category : #comment }
 FamixEsopeGenerator >> commentEsosl [
 	^''
 ]
@@ -115,7 +115,7 @@ FamixEsopeGenerator >> commentImplicitPointer [
 	^ ''
 ]
 
-{ #category : #definition }
+{ #category : #comment }
 FamixEsopeGenerator >> commentParameter [
 	^''
 ]
@@ -470,7 +470,7 @@ FamixEsopeGenerator >> defineClasses [
 
 	eComment := self
 		remoteEntity: #EComment
-		withPrefix: #FamixFortran.
+		withPrefix: #FamixFortran77.
 
 	fortranVariable := builder
 		newClassNamed: #FortranVariable
@@ -478,7 +478,7 @@ FamixEsopeGenerator >> defineClasses [
 
 	eEntity := self
 		remoteEntity: #EEntity
-		withPrefix: #FamixFortran.
+		withPrefix: #FamixFortran77.
 
 	implicitPointer := builder
 		newClassNamed: #ImplicitPointer
@@ -585,7 +585,7 @@ FamixEsopeGenerator >> defineRelations [
 
 { #category : #definition }
 FamixEsopeGenerator >> newBuilder [
-	^ super newBuilder
-		withImportingContext;
-		yourself
+	^super newBuilder
+		  withFileImport;
+		  yourself
 ]
