@@ -74,17 +74,17 @@ ESOPE offers the possibility to free the memory space occupied by the segment. T
 "
 Class {
 	#name : #FamixEsopeSegini,
-	#superclass : #FamixEsopeSegmentUse,
+	#superclass : #FamixEsopeSegmentCommand,
 	#category : #'Famix-Esope-Entities-Entities'
 }
 
 { #category : #meta }
 FamixEsopeSegini class >> annotation [
 
-	<FMClass: #Segini super: #FamixEsopeSegmentUse>
+	<FMClass: #Segini super: #FamixEsopeSegmentCommand>
 	<package: #'Famix-Esope-Entities'>
 	<generated>
-	^self
+	^ self
 ]
 
 { #category : #'instance creation' }

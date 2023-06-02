@@ -15,5 +15,5 @@ FamixEsopeFortranVariable class >> annotation [
 	<FMClass: #FortranVariable super: #FamixEsopeEntity>
 	<package: #'Famix-Esope-Entities'>
 	<generated>
-	^self
+	^ self
 ]

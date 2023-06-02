@@ -10,5 +10,5 @@ FamixEsopeImplicitPointer class >> annotation [
 	<FMClass: #ImplicitPointer super: #FamixEsopeFortranVariable>
 	<package: #'Famix-Esope-Entities'>
 	<generated>
-	^self
+	^ self
 ]

@@ -9,17 +9,17 @@ Waiting on the working disk will only be done if the memory requests require it 
 "
 Class {
 	#name : #FamixEsopeSegdes,
-	#superclass : #FamixEsopeSegmentUse,
+	#superclass : #FamixEsopeSegmentCommand,
 	#category : #'Famix-Esope-Entities-Entities'
 }
 
 { #category : #meta }
 FamixEsopeSegdes class >> annotation [
 
-	<FMClass: #Segdes super: #FamixEsopeSegmentUse>
+	<FMClass: #Segdes super: #FamixEsopeSegmentCommand>
 	<package: #'Famix-Esope-Entities'>
 	<generated>
-	^self
+	^ self
 ]
 
 { #category : #meta }

@@ -20,7 +20,7 @@ Class {
 	#superclass : #FamixEsopeFortranVariable,
 	#instVars : [
 		'#segment => FMOne type: #FamixEsopeSegment opposite: #pointers',
-		'#segmentUse => FMOne type: #FamixEsopeSegmentUse opposite: #pointer'
+		'#segmentCommand => FMOne type: #FamixEsopeSegmentCommand opposite: #pointer'
 	],
 	#category : #'Famix-Esope-Entities-Entities'
 }
@@ -31,7 +31,7 @@ FamixEsopePointer class >> annotation [
 	<FMClass: #Pointer super: #FamixEsopeFortranVariable>
 	<package: #'Famix-Esope-Entities'>
 	<generated>
-	^self
+	^ self
 ]
 
 { #category : #'private - utility' }
@@ -51,26 +51,26 @@ FamixEsopePointer class >> newEntity: anEntity [
 ]
 
 { #category : #accessing }
-FamixEsopePointer >> comment [
-	"Relation named: #comment type: #FamixFortranComment opposite: #pointer"
+FamixEsopePointer >> eComment [
+	"Relation named: #eComment type: #FamixFortran77EComment opposite: #pointer"
 
 	<generated>
 	<derived>
-	<FMProperty: #comment type: #FamixFortranComment opposite: #pointer>
-	^ self attributeAt: #comment ifAbsent: [ nil ]
+	<FMProperty: #eComment type: #FamixFortran77EComment opposite: #pointer>
+	^ self attributeAt: #eComment ifAbsent: [ nil ]
 ]
 
 { #category : #accessing }
-FamixEsopePointer >> comment: anObject [
+FamixEsopePointer >> eComment: anObject [
 
 	<generated>
-	(self attributeAt: #comment ifAbsentPut: [nil]) == anObject ifTrue: [ ^ anObject ].
+	(self attributeAt: #eComment ifAbsentPut: [nil]) == anObject ifTrue: [ ^ anObject ].
 	anObject ifNil: [ | otherSide |
-		otherSide :=  self comment.
-		self attributeAt: #comment put: anObject.
+		otherSide :=  self eComment.
+		self attributeAt: #eComment put: anObject.
 		otherSide pointer: nil ]
 	ifNotNil: [ 
-		self attributeAt: #comment put: anObject.
+		self attributeAt: #eComment put: anObject.
 		anObject pointer: self ]
 ]
 
@@ -90,17 +90,17 @@ FamixEsopePointer >> segment: anObject [
 ]
 
 { #category : #accessing }
-FamixEsopePointer >> segmentUse [
-	"Relation named: #segmentUse type: #FamixEsopeSegmentUse opposite: #pointer"
+FamixEsopePointer >> segmentCommand [
+	"Relation named: #segmentCommand type: #FamixEsopeSegmentCommand opposite: #pointer"
 
 	<generated>
 	<derived>
-	^ segmentUse
+	^ segmentCommand
 ]
 
 { #category : #accessing }
-FamixEsopePointer >> segmentUse: anObject [
+FamixEsopePointer >> segmentCommand: anObject [
 
 	<generated>
-	segmentUse := anObject
+	segmentCommand := anObject
 ]
