@@ -14,47 +14,40 @@ Class {
 		'accessToDimensions',
 		'accessToPointer',
 		'implicitPointer',
-		'segmentUse',
 		'attributeAssignment',
 		'esoat',
 		'esoar',
 		'esosl',
-		'esopeFunction',
-		'function',
 		'pointer',
-		'fortranComment',
 		'fortranVariable',
-		'unknown'
+		'unknown',
+		'parameter',
+		'segmentCommand',
+		'esoTransformation',
+		'eComment',
+		'eEntity'
 	],
 	#category : #'Famix-Esope-Generator'
 }
 
 { #category : #generating }
-FamixEsopeGenerator class >> generate [ 
-	<script>
-	^ super generate
-]
-
-{ #category : #generating }
 FamixEsopeGenerator class >> packageName [
-
-	^ #'Famix-Esope-Entities'
+	^#'Famix-Esope-Entities'
 ]
 
 { #category : #generating }
 FamixEsopeGenerator class >> prefix [
-
-	^ #'FamixEsope'
+	^#FamixEsope
 ]
 
 { #category : #generating }
 FamixEsopeGenerator class >> submetamodels [
-	^ {FamixFortranGenerator}
+	^{ FamixFortran77Generator }
 ]
 
 { #category : #comment }
 FamixEsopeGenerator >> commentAccesPointer [
-	^ 'Acceder à un pointeur `Pointeur` pointant sur un segment'
+	^'Accessing a pointer `Pointeur` pointing to a segment'
 ]
 
 { #category : #comment }
@@ -92,8 +85,23 @@ forme `abc.def=variable/value`'
 ]
 
 { #category : #comment }
-FamixEsopeGenerator >> commentEsopeEntity [
-	^ 'Comment for esopeEntity'
+FamixEsopeGenerator >> commentEsoTransformation [
+	^ 'Comment for abstract class EsopeFunction parent of EsoAt, EsoAr, EsoSl'
+]
+
+{ #category : #comment }
+FamixEsopeGenerator >> commentEsoar [
+	^''
+]
+
+{ #category : #comment }
+FamixEsopeGenerator >> commentEsoat [
+	^''
+]
+
+{ #category : #comment }
+FamixEsopeGenerator >> commentEsosl [
+	^''
 ]
 
 { #category : #comment }
@@ -105,6 +113,11 @@ FamixEsopeGenerator >> commentFortranVariable [
 { #category : #comment }
 FamixEsopeGenerator >> commentImplicitPointer [
 	^ ''
+]
+
+{ #category : #comment }
+FamixEsopeGenerator >> commentParameter [
+	^''
 ]
 
 { #category : #comment }
@@ -361,7 +374,7 @@ The statement is included between the words `SEGMENT` and `ENDSEGMENT`. Remember
 ]
 
 { #category : #comment }
-FamixEsopeGenerator >> commentSegmentUse [
+FamixEsopeGenerator >> commentSegmentCommand [
 
 	^ '# Handling of data structures: `SEGMENT`
 
@@ -438,55 +451,74 @@ FamixEsopeGenerator >> defineClasses [
 	super defineClasses.
 
 	attribute := builder
-		             newClassNamed: #Attribute
-		             comment: self commentAttribute.
+		newClassNamed: #Attribute
+		comment: self commentAttribute.
 
-	esopeFunction := builder
-		                 newClassNamed: #EsopeFunction
-		                 comment: self commentEsopeEntity.
+	esoTransformation := builder
+		newClassNamed: #EsoTransformation
+		comment: self commentEsoTransformation.
 
-	esoar := builder newClassNamed: #EsoAr.
-	esoat := builder newClassNamed: #EsoAt.
-	esosl := builder newClassNamed: #EsoSl.
+	esoar := builder
+		newClassNamed: #EsoAr
+		comment: self commentEsoar.
+	esoat := builder
+		newClassNamed: #EsoAt
+		comment: self commentEsoat.
+	esosl := builder
+		newClassNamed: #EsoSl
+		comment: self commentEsosl.
 
-	"comment := builder newClassNamed: #Comment."
-	fortranComment := self
-		                  remoteEntity: #Comment
-		                  withPrefix: #FamixFortran.
+	eComment := self
+		remoteEntity: #EComment
+		withPrefix: #FamixFortran77.
 
 	fortranVariable := builder
-		                   newClassNamed: #FortranVariable
-		                   comment: self commentFortranVariable.
+		newClassNamed: #FortranVariable
+		comment: self commentFortranVariable.
 
-	function := self remoteEntity: #Function withPrefix: #FamixFortran.
+	eEntity := self
+		remoteEntity: #EEntity
+		withPrefix: #FamixFortran77.
 
 	implicitPointer := builder
-		                   newClassNamed: #ImplicitPointer
-		                   comment: self commentImplicitPointer.
+		newClassNamed: #ImplicitPointer
+		comment: self commentImplicitPointer.
+	
+	parameter := builder
+		newClassNamed: #Parameter
+		comment: self commentParameter.
 
 	pointer := builder
-		           newClassNamed: #Pointer
-		           comment: self commentPointer.
+		newClassNamed: #Pointer
+		comment: self commentPointer.
 
-	segadj := builder newClassNamed: #Segadj comment: self commentSegadj.
-	segact := builder newClassNamed: #Segact comment: self commentSegact.
-	segdes := builder newClassNamed: #Segdes comment: self commentSegdes.
-	segini := builder newClassNamed: #Segini comment: self commentSegini.
-	segsup := builder newClassNamed: #Segsup comment: self commentSegsup.
+	segact := builder
+		newClassNamed: #Segact
+		comment: self commentSegact.
+	segadj := builder
+		newClassNamed: #Segadj
+		comment: self commentSegadj.
+	segdes := builder
+		newClassNamed: #Segdes
+		comment: self commentSegdes.
+	segini := builder
+		newClassNamed: #Segini
+		comment: self commentSegini.
+	segsup := builder
+		newClassNamed: #Segsup
+		comment: self commentSegsup.
 
 	segment := builder
-		           newClassNamed: #Segment
-		           comment: self commentSegment.
+		newClassNamed: #Segment
+		comment: self commentSegment.
 
-	segmentUse := builder
-		              newClassNamed: #SegmentUse
-		              comment: self commentSegmentUse.
-
-	"type := builder newClassNamed: #Type comment: self commentType."
+	segmentCommand := builder
+		newClassNamed: #SegmentCommand
+		comment: self commentSegmentCommand.
 
 	unknown := builder
-		           newClassNamed: #Unknown
-		           comment: self commentUnknown
+		newClassNamed: #Unknown
+		comment: self commentUnknown
 ]
 
 { #category : #definition }
@@ -497,30 +529,30 @@ FamixEsopeGenerator >> defineHierarchy [
 	attribute --|> #TAttribute.
 	attribute --|> fortranVariable.
 
-	esoar --|> esopeFunction.
-	esoat --|> esopeFunction.
-	esosl --|> esopeFunction.
+	esoar --|> esoTransformation.
+	esoat --|> esoTransformation.
+	esosl --|> esoTransformation.
 	
-	esopeFunction --|> #TFunction.
+"	esoTransformation --|> #TFunction."
 	
 	implicitPointer --|> fortranVariable.
 	
 	"pointer --|> #TType."
 	pointer --|> fortranVariable.
 
-	segact --|> segmentUse.
+	segact --|> segmentCommand.
 
-	segadj --|> segmentUse.
+	segadj --|> segmentCommand.
 
-	segdes --|> segmentUse.
+	segdes --|> segmentCommand.
 
-	segini --|> segmentUse.
+	segini --|> segmentCommand.
 
-	segsup --|> segmentUse.
+	segsup --|> segmentCommand.
 
 	segment --|> #TType.
 
-	segmentUse --|> #TNamedEntity.
+	segmentCommand --|> #TNamedEntity.
 	
 	fortranVariable --|> #TStructuralEntity.
 ]
@@ -535,24 +567,25 @@ FamixEsopeGenerator >> defineRelations [
 
 	super defineRelations.
 
-	fortranComment - unknown.
+	eComment - unknown.
 
-	fortranComment - pointer.
-	fortranComment - segment.
-	fortranComment - segmentUse.
+	eComment - pointer.
+	eComment - segment.
+	eComment - segmentCommand.
 
-	esopeFunction - function.
+	esoTransformation - eEntity.
 
 	segment -* pointer.
-
 	segment <>-* attribute.
+	segment <>-* parameter.
+	
 
-	segmentUse - pointer
+	segmentCommand - pointer
 ]
 
 { #category : #definition }
 FamixEsopeGenerator >> newBuilder [
-	^ super newBuilder
-		withImportingContext;
-		yourself
+	^super newBuilder
+		  withFileImport;
+		  yourself
 ]

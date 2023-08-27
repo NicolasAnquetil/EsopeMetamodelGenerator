@@ -13,7 +13,7 @@ FamixEsopeUnknown class >> annotation [
 	<FMClass: #Unknown super: #FamixEsopeEntity>
 	<package: #'Famix-Esope-Entities'>
 	<generated>
-	^self
+	^ self
 ]
 
 { #category : #'private - utility' }
@@ -31,25 +31,25 @@ FamixEsopeUnknown class >> newEntity: anEntity [
 ]
 
 { #category : #accessing }
-FamixEsopeUnknown >> comment [
-	"Relation named: #comment type: #FamixFortranComment opposite: #unknown"
+FamixEsopeUnknown >> eComment [
+	"Relation named: #eComment type: #FamixFortran77EComment opposite: #unknown"
 
 	<generated>
 	<derived>
-	<FMProperty: #comment type: #FamixFortranComment opposite: #unknown>
-	^ self attributeAt: #comment ifAbsent: [ nil ]
+	<FMProperty: #eComment type: #FamixFortran77EComment opposite: #unknown>
+	^ self attributeAt: #eComment ifAbsent: [ nil ]
 ]
 
 { #category : #accessing }
-FamixEsopeUnknown >> comment: anObject [
+FamixEsopeUnknown >> eComment: anObject [
 
 	<generated>
-	(self attributeAt: #comment ifAbsentPut: [nil]) == anObject ifTrue: [ ^ anObject ].
+	(self attributeAt: #eComment ifAbsentPut: [nil]) == anObject ifTrue: [ ^ anObject ].
 	anObject ifNil: [ | otherSide |
-		otherSide :=  self comment.
-		self attributeAt: #comment put: anObject.
+		otherSide :=  self eComment.
+		self attributeAt: #eComment put: anObject.
 		otherSide unknown: nil ]
 	ifNotNil: [ 
-		self attributeAt: #comment put: anObject.
+		self attributeAt: #eComment put: anObject.
 		anObject unknown: self ]
 ]

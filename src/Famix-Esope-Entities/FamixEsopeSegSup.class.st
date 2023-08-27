@@ -41,17 +41,17 @@ c23456789012345678901234567890123456789012345678901234567890123456789012
 "
 Class {
 	#name : #FamixEsopeSegsup,
-	#superclass : #FamixEsopeSegmentUse,
+	#superclass : #FamixEsopeSegmentCommand,
 	#category : #'Famix-Esope-Entities-Entities'
 }
 
 { #category : #meta }
 FamixEsopeSegsup class >> annotation [
 
-	<FMClass: #Segsup super: #FamixEsopeSegmentUse>
+	<FMClass: #Segsup super: #FamixEsopeSegmentCommand>
 	<package: #'Famix-Esope-Entities'>
 	<generated>
-	^self
+	^ self
 ]
 
 { #category : #'instance creation' }

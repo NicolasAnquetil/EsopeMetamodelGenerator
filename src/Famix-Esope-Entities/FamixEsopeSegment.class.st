@@ -28,6 +28,7 @@ Class {
 	#classTraits : 'FamixTType classTrait',
 	#instVars : [
 		'#attributes => FMMany type: #FamixEsopeAttribute opposite: #segment',
+		'#parameters => FMMany type: #FamixEsopeParameter opposite: #segment',
 		'#pointers => FMMany type: #FamixEsopePointer opposite: #segment'
 	],
 	#category : #'Famix-Esope-Entities-Entities'
@@ -39,7 +40,7 @@ FamixEsopeSegment class >> annotation [
 	<FMClass: #Segment super: #FamixEsopeEntity>
 	<package: #'Famix-Esope-Entities'>
 	<generated>
-	^self
+	^ self
 ]
 
 { #category : #'private - utility' }
@@ -66,10 +67,9 @@ FamixEsopeSegment class >> newEntity: anEntity [
 
 { #category : #meta }
 FamixEsopeSegment class >> newFromFortranComment: aFortranComment [
-
-	^ (super newFromFortranComment: aFortranComment)
-		  name: (self getNameFrom: aFortranComment content without: #segment);
-		  yourself
+	^(super newFromFortranComment: aFortranComment)
+		name: (self getNameFrom: aFortranComment content without: #segment);
+		yourself
 ]
 
 { #category : #adding }
@@ -89,6 +89,12 @@ FamixEsopeSegment >> addAttributes: anEntity [
 			addAttribute:
 				(FamixEsopeAttribute new mooseModel: anEntity mooseModel; name: (' ' split: a) last);
 			yourself ]
+]
+
+{ #category : #adding }
+FamixEsopeSegment >> addParameter: anObject [
+	<generated>
+	^ self parameters add: anObject
 ]
 
 { #category : #adding }
@@ -121,27 +127,50 @@ FamixEsopeSegment >> attributesGroup [
 ]
 
 { #category : #accessing }
-FamixEsopeSegment >> comment [
-	"Relation named: #comment type: #FamixFortranComment opposite: #segment"
+FamixEsopeSegment >> eComment [
+	"Relation named: #eComment type: #FamixFortran77EComment opposite: #segment"
 
 	<generated>
 	<derived>
-	<FMProperty: #comment type: #FamixFortranComment opposite: #segment>
-	^ self attributeAt: #comment ifAbsent: [ nil ]
+	<FMProperty: #eComment type: #FamixFortran77EComment opposite: #segment>
+	^ self attributeAt: #eComment ifAbsent: [ nil ]
 ]
 
 { #category : #accessing }
-FamixEsopeSegment >> comment: anObject [
+FamixEsopeSegment >> eComment: anObject [
 
 	<generated>
-	(self attributeAt: #comment ifAbsentPut: [nil]) == anObject ifTrue: [ ^ anObject ].
+	(self attributeAt: #eComment ifAbsentPut: [nil]) == anObject ifTrue: [ ^ anObject ].
 	anObject ifNil: [ | otherSide |
-		otherSide :=  self comment.
-		self attributeAt: #comment put: anObject.
+		otherSide :=  self eComment.
+		self attributeAt: #eComment put: anObject.
 		otherSide segment: nil ]
 	ifNotNil: [ 
-		self attributeAt: #comment put: anObject.
+		self attributeAt: #eComment put: anObject.
 		anObject segment: self ]
+]
+
+{ #category : #accessing }
+FamixEsopeSegment >> parameters [
+	"Relation named: #parameters type: #FamixEsopeParameter opposite: #segment"
+
+	<generated>
+	<derived>
+	^ parameters
+]
+
+{ #category : #accessing }
+FamixEsopeSegment >> parameters: anObject [
+
+	<generated>
+	parameters value: anObject
+]
+
+{ #category : #navigation }
+FamixEsopeSegment >> parametersGroup [
+	<generated>
+	<navigation: 'Parameters'>
+	^ MooseSpecializedGroup withAll: self parameters asSet
 ]
 
 { #category : #accessing }

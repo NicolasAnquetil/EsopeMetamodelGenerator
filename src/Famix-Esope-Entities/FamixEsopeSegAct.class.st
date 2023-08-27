@@ -79,17 +79,17 @@ In a subprogram, it is possible to know the dimension of an array and Esope allo
 "
 Class {
 	#name : #FamixEsopeSegact,
-	#superclass : #FamixEsopeSegmentUse,
+	#superclass : #FamixEsopeSegmentCommand,
 	#category : #'Famix-Esope-Entities-Entities'
 }
 
 { #category : #meta }
 FamixEsopeSegact class >> annotation [
 
-	<FMClass: #Segact super: #FamixEsopeSegmentUse>
+	<FMClass: #Segact super: #FamixEsopeSegmentCommand>
 	<package: #'Famix-Esope-Entities'>
 	<generated>
-	^self
+	^ self
 ]
 
 { #category : #'private - utility' }

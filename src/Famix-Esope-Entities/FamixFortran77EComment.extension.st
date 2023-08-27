@@ -1,97 +1,97 @@
-Extension { #name : #FamixFortranComment }
+Extension { #name : #FamixFortran77EComment }
 
 { #category : #'*Famix-Esope-Entities-accessing' }
-FamixFortranComment >> pointer [
-	"Relation named: #pointer type: #FamixEsopePointer opposite: #comment"
+FamixFortran77EComment >> pointer [
+	"Relation named: #pointer type: #FamixEsopePointer opposite: #eComment"
 
 	<generated>
-	<FMProperty: #pointer type: #FamixEsopePointer opposite: #comment>
+	<FMProperty: #pointer type: #FamixEsopePointer opposite: #eComment>
 	<package: #'Famix-Esope-Entities'>
 	^ self attributeAt: #pointer ifAbsent: [ nil ]
 ]
 
 { #category : #'*Famix-Esope-Entities-accessing' }
-FamixFortranComment >> pointer: anObject [
+FamixFortran77EComment >> pointer: anObject [
 
 	<generated>
 	(self attributeAt: #pointer ifAbsentPut: [nil]) == anObject ifTrue: [ ^ anObject ].
 	anObject ifNil: [ | otherSide |
 		otherSide :=  self pointer.
 		self attributeAt: #pointer put: anObject.
-		otherSide comment: nil ]
+		otherSide eComment: nil ]
 	ifNotNil: [ 
 		self attributeAt: #pointer put: anObject.
-		anObject comment: self ]
+		anObject eComment: self ]
 ]
 
 { #category : #'*Famix-Esope-Entities-accessing' }
-FamixFortranComment >> segment [
-	"Relation named: #segment type: #FamixEsopeSegment opposite: #comment"
+FamixFortran77EComment >> segment [
+	"Relation named: #segment type: #FamixEsopeSegment opposite: #eComment"
 
 	<generated>
-	<FMProperty: #segment type: #FamixEsopeSegment opposite: #comment>
+	<FMProperty: #segment type: #FamixEsopeSegment opposite: #eComment>
 	<package: #'Famix-Esope-Entities'>
 	^ self attributeAt: #segment ifAbsent: [ nil ]
 ]
 
 { #category : #'*Famix-Esope-Entities-accessing' }
-FamixFortranComment >> segment: anObject [
+FamixFortran77EComment >> segment: anObject [
 
 	<generated>
 	(self attributeAt: #segment ifAbsentPut: [nil]) == anObject ifTrue: [ ^ anObject ].
 	anObject ifNil: [ | otherSide |
 		otherSide :=  self segment.
 		self attributeAt: #segment put: anObject.
-		otherSide comment: nil ]
+		otherSide eComment: nil ]
 	ifNotNil: [ 
 		self attributeAt: #segment put: anObject.
-		anObject comment: self ]
+		anObject eComment: self ]
 ]
 
 { #category : #'*Famix-Esope-Entities-accessing' }
-FamixFortranComment >> segmentUse [
-	"Relation named: #segmentUse type: #FamixEsopeSegmentUse opposite: #comment"
+FamixFortran77EComment >> segmentCommand [
+	"Relation named: #segmentCommand type: #FamixEsopeSegmentCommand opposite: #eComment"
 
 	<generated>
-	<FMProperty: #segmentUse type: #FamixEsopeSegmentUse opposite: #comment>
+	<FMProperty: #segmentCommand type: #FamixEsopeSegmentCommand opposite: #eComment>
 	<package: #'Famix-Esope-Entities'>
-	^ self attributeAt: #segmentUse ifAbsent: [ nil ]
+	^ self attributeAt: #segmentCommand ifAbsent: [ nil ]
 ]
 
 { #category : #'*Famix-Esope-Entities-accessing' }
-FamixFortranComment >> segmentUse: anObject [
+FamixFortran77EComment >> segmentCommand: anObject [
 
 	<generated>
-	(self attributeAt: #segmentUse ifAbsentPut: [nil]) == anObject ifTrue: [ ^ anObject ].
+	(self attributeAt: #segmentCommand ifAbsentPut: [nil]) == anObject ifTrue: [ ^ anObject ].
 	anObject ifNil: [ | otherSide |
-		otherSide :=  self segmentUse.
-		self attributeAt: #segmentUse put: anObject.
-		otherSide comment: nil ]
+		otherSide :=  self segmentCommand.
+		self attributeAt: #segmentCommand put: anObject.
+		otherSide eComment: nil ]
 	ifNotNil: [ 
-		self attributeAt: #segmentUse put: anObject.
-		anObject comment: self ]
+		self attributeAt: #segmentCommand put: anObject.
+		anObject eComment: self ]
 ]
 
 { #category : #'*Famix-Esope-Entities-accessing' }
-FamixFortranComment >> unknown [
-	"Relation named: #unknown type: #FamixEsopeUnknown opposite: #comment"
+FamixFortran77EComment >> unknown [
+	"Relation named: #unknown type: #FamixEsopeUnknown opposite: #eComment"
 
 	<generated>
-	<FMProperty: #unknown type: #FamixEsopeUnknown opposite: #comment>
+	<FMProperty: #unknown type: #FamixEsopeUnknown opposite: #eComment>
 	<package: #'Famix-Esope-Entities'>
 	^ self attributeAt: #unknown ifAbsent: [ nil ]
 ]
 
 { #category : #'*Famix-Esope-Entities-accessing' }
-FamixFortranComment >> unknown: anObject [
+FamixFortran77EComment >> unknown: anObject [
 
 	<generated>
 	(self attributeAt: #unknown ifAbsentPut: [nil]) == anObject ifTrue: [ ^ anObject ].
 	anObject ifNil: [ | otherSide |
 		otherSide :=  self unknown.
 		self attributeAt: #unknown put: anObject.
-		otherSide comment: nil ]
+		otherSide eComment: nil ]
 	ifNotNil: [ 
 		self attributeAt: #unknown put: anObject.
-		anObject comment: self ]
+		anObject eComment: self ]
 ]

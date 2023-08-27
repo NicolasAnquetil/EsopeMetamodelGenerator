@@ -33,17 +33,17 @@ c23456789012345678901234567890123456789012345678901234567890123456789012
 "
 Class {
 	#name : #FamixEsopeSegadj,
-	#superclass : #FamixEsopeSegmentUse,
+	#superclass : #FamixEsopeSegmentCommand,
 	#category : #'Famix-Esope-Entities-Entities'
 }
 
 { #category : #meta }
 FamixEsopeSegadj class >> annotation [
 
-	<FMClass: #Segadj super: #FamixEsopeSegmentUse>
+	<FMClass: #Segadj super: #FamixEsopeSegmentCommand>
 	<package: #'Famix-Esope-Entities'>
 	<generated>
-	^self
+	^ self
 ]
 
 { #category : #'instance creation' }

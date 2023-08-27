@@ -10,7 +10,8 @@ FamixEsopeEntity class >> annotation [
 	<FMClass: #Entity super: #MooseEntity>
 	<package: #'Famix-Esope-Entities'>
 	<generated>
-	^self
+	<abstract>
+	^ self
 ]
 
 { #category : #'private - utility' }
@@ -26,6 +27,13 @@ FamixEsopeEntity class >> getNameFrom: aFortranComment without: aPrefix [
 		  trim removePrefix: ',') trim
 ]
 
+{ #category : #testing }
+FamixEsopeEntity class >> isAbstract [
+
+	<generated>
+	^ self == FamixEsopeEntity
+]
+
 { #category : #meta }
 FamixEsopeEntity class >> metamodel [
 
@@ -33,44 +41,29 @@ FamixEsopeEntity class >> metamodel [
 	^ FamixEsopeModel metamodel
 ]
 
-{ #category : #'private - utility' }
-FamixEsopeEntity class >> newEntity: anEntity [
-
-	self subclassResponsibility
+{ #category : #testing }
+FamixEsopeEntity class >> newEntity: famixF77Entity [
+	^self new
+		  mooseModel: famixF77Entity mooseModel;
+		  yourself
 ]
 
 { #category : #meta }
-FamixEsopeEntity class >> newFromFortranComment: aFortranComment [
-1halt.
-	^ self new
-		  content: aFortranComment;
+FamixEsopeEntity class >> newFromFortranComment: eComment [
+	^self new
+		  content: eComment;
 		  yourself
 ]
 
 { #category : #'private - utility' }
-FamixEsopeEntity class >> newFromFortranFunction: aFortranFunction [
-
-	^ self new
-		  function: aFortranFunction;
+FamixEsopeEntity class >> newFromFortranFunction: famixF77Entity [
+	^self new
+		  eEntity: famixF77Entity;
 		  yourself
 ]
 
 { #category : #testing }
 FamixEsopeEntity >> isAttribute [
-
-	<generated>
-	^ false
-]
-
-{ #category : #testing }
-FamixEsopeEntity >> isBehavioural [
-
-	<generated>
-	^ false
-]
-
-{ #category : #testing }
-FamixEsopeEntity >> isFunction [
 
 	<generated>
 	^ false

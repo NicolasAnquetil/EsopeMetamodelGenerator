@@ -1,16 +1,16 @@
 Class {
 	#name : #FamixEsopeEsoAr,
-	#superclass : #FamixEsopeEsopeFunction,
+	#superclass : #FamixEsopeEsoTransformation,
 	#category : #'Famix-Esope-Entities-Entities'
 }
 
 { #category : #meta }
 FamixEsopeEsoAr class >> annotation [
 
-	<FMClass: #EsoAr super: #FamixEsopeEsopeFunction>
+	<FMClass: #EsoAr super: #FamixEsopeEsoTransformation>
 	<package: #'Famix-Esope-Entities'>
 	<generated>
-	^self
+	^ self
 ]
 
 { #category : #'private - utility' }

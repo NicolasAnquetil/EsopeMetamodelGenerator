@@ -1,209 +1,254 @@
+"
+This class is used to choose the entities to be imported when loading a model from file.
+It is used by `MiImportingContextPresenter` in a `MiImportModelFromFileDialog` to import a FamixEsopeModel.
+"
 Class {
 	#name : #FamixEsopeImportingContext,
-	#superclass : #FmxImportingContext,
-	#category : #'Famix-Esope-Entities'
+	#superclass : #FamixImportingContext,
+	#category : #'Famix-Esope-Entities-Import'
 }
 
-{ #category : #testing }
+{ #category : #accessing }
+FamixEsopeImportingContext class >> importedMetamodel [
+
+	<generated>
+	^ FamixEsopeModel metamodel
+]
+
+{ #category : #importing }
 FamixEsopeImportingContext >> importAttribute [
+
 	<generated>
-	^ self import: FamixEsopeAttribute
+	^ self importConcreteEntity: (self class fm3ClassNamed: #Attribute)
 ]
 
-{ #category : #testing }
-FamixEsopeImportingContext >> importEntity [
-	<generated>
-	^ self import: FamixEsopeEntity
-]
-
-{ #category : #testing }
+{ #category : #importing }
 FamixEsopeImportingContext >> importEsoAr [
+
 	<generated>
-	^ self import: FamixEsopeEsoAr
+	^ self importConcreteEntity: (self class fm3ClassNamed: #EsoAr)
 ]
 
-{ #category : #testing }
+{ #category : #importing }
 FamixEsopeImportingContext >> importEsoAt [
+
 	<generated>
-	^ self import: FamixEsopeEsoAt
+	^ self importConcreteEntity: (self class fm3ClassNamed: #EsoAt)
 ]
 
-{ #category : #testing }
+{ #category : #importing }
 FamixEsopeImportingContext >> importEsoSl [
+
 	<generated>
-	^ self import: FamixEsopeEsoSl
+	^ self importConcreteEntity: (self class fm3ClassNamed: #EsoSl)
 ]
 
-{ #category : #testing }
-FamixEsopeImportingContext >> importEsopeFunction [
+{ #category : #importing }
+FamixEsopeImportingContext >> importEsoTransformation [
+
 	<generated>
-	^ self import: FamixEsopeEsopeFunction
+	^ self importConcreteEntity: (self class fm3ClassNamed: #EsoTransformation)
 ]
 
-{ #category : #testing }
+{ #category : #importing }
 FamixEsopeImportingContext >> importFortranVariable [
+
 	<generated>
-	^ self import: FamixEsopeFortranVariable
+	^ self importConcreteEntity: (self class fm3ClassNamed: #FortranVariable)
 ]
 
-{ #category : #testing }
+{ #category : #importing }
 FamixEsopeImportingContext >> importImplicitPointer [
+
 	<generated>
-	^ self import: FamixEsopeImplicitPointer
+	^ self importConcreteEntity: (self class fm3ClassNamed: #ImplicitPointer)
 ]
 
-{ #category : #testing }
+{ #category : #importing }
+FamixEsopeImportingContext >> importParameter [
+
+	<generated>
+	^ self importConcreteEntity: (self class fm3ClassNamed: #Parameter)
+]
+
+{ #category : #importing }
 FamixEsopeImportingContext >> importPointer [
+
 	<generated>
-	^ self import: FamixEsopePointer
+	^ self importConcreteEntity: (self class fm3ClassNamed: #Pointer)
 ]
 
-{ #category : #testing }
+{ #category : #importing }
 FamixEsopeImportingContext >> importSegact [
+
 	<generated>
-	^ self import: FamixEsopeSegact
+	^ self importConcreteEntity: (self class fm3ClassNamed: #Segact)
 ]
 
-{ #category : #testing }
+{ #category : #importing }
 FamixEsopeImportingContext >> importSegadj [
+
 	<generated>
-	^ self import: FamixEsopeSegadj
+	^ self importConcreteEntity: (self class fm3ClassNamed: #Segadj)
 ]
 
-{ #category : #testing }
+{ #category : #importing }
 FamixEsopeImportingContext >> importSegdes [
+
 	<generated>
-	^ self import: FamixEsopeSegdes
+	^ self importConcreteEntity: (self class fm3ClassNamed: #Segdes)
 ]
 
-{ #category : #testing }
+{ #category : #importing }
 FamixEsopeImportingContext >> importSegini [
+
 	<generated>
-	^ self import: FamixEsopeSegini
+	^ self importConcreteEntity: (self class fm3ClassNamed: #Segini)
 ]
 
-{ #category : #testing }
+{ #category : #importing }
 FamixEsopeImportingContext >> importSegment [
+
 	<generated>
-	^ self import: FamixEsopeSegment
+	^ self importConcreteEntity: (self class fm3ClassNamed: #Segment)
 ]
 
-{ #category : #testing }
-FamixEsopeImportingContext >> importSegmentUse [
+{ #category : #importing }
+FamixEsopeImportingContext >> importSegmentCommand [
+
 	<generated>
-	^ self import: FamixEsopeSegmentUse
+	^ self importConcreteEntity: (self class fm3ClassNamed: #SegmentCommand)
 ]
 
-{ #category : #testing }
+{ #category : #importing }
 FamixEsopeImportingContext >> importSegsup [
+
 	<generated>
-	^ self import: FamixEsopeSegsup
+	^ self importConcreteEntity: (self class fm3ClassNamed: #Segsup)
 ]
 
-{ #category : #testing }
+{ #category : #importing }
 FamixEsopeImportingContext >> importUnknown [
+
 	<generated>
-	^ self import: FamixEsopeUnknown
+	^ self importConcreteEntity: (self class fm3ClassNamed: #Unknown)
 ]
 
 { #category : #testing }
 FamixEsopeImportingContext >> shouldImportAttribute [
-	<generated>
-	^ self shouldImport: FamixEsopeAttribute
-]
 
-{ #category : #testing }
-FamixEsopeImportingContext >> shouldImportEntity [
 	<generated>
-	^ self shouldImport: FamixEsopeEntity
+	^ self shouldImport: #Attribute
 ]
 
 { #category : #testing }
 FamixEsopeImportingContext >> shouldImportEsoAr [
+
 	<generated>
-	^ self shouldImport: FamixEsopeEsoAr
+	^ self shouldImport: #EsoAr
 ]
 
 { #category : #testing }
 FamixEsopeImportingContext >> shouldImportEsoAt [
+
 	<generated>
-	^ self shouldImport: FamixEsopeEsoAt
+	^ self shouldImport: #EsoAt
 ]
 
 { #category : #testing }
 FamixEsopeImportingContext >> shouldImportEsoSl [
+
 	<generated>
-	^ self shouldImport: FamixEsopeEsoSl
+	^ self shouldImport: #EsoSl
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> shouldImportEsopeFunction [
+FamixEsopeImportingContext >> shouldImportEsoTransformation [
+
 	<generated>
-	^ self shouldImport: FamixEsopeEsopeFunction
+	^ self shouldImport: #EsoTransformation
 ]
 
 { #category : #testing }
 FamixEsopeImportingContext >> shouldImportFortranVariable [
+
 	<generated>
-	^ self shouldImport: FamixEsopeFortranVariable
+	^ self shouldImport: #FortranVariable
 ]
 
 { #category : #testing }
 FamixEsopeImportingContext >> shouldImportImplicitPointer [
+
 	<generated>
-	^ self shouldImport: FamixEsopeImplicitPointer
+	^ self shouldImport: #ImplicitPointer
+]
+
+{ #category : #testing }
+FamixEsopeImportingContext >> shouldImportParameter [
+
+	<generated>
+	^ self shouldImport: #Parameter
 ]
 
 { #category : #testing }
 FamixEsopeImportingContext >> shouldImportPointer [
+
 	<generated>
-	^ self shouldImport: FamixEsopePointer
+	^ self shouldImport: #Pointer
 ]
 
 { #category : #testing }
 FamixEsopeImportingContext >> shouldImportSegact [
+
 	<generated>
-	^ self shouldImport: FamixEsopeSegact
+	^ self shouldImport: #Segact
 ]
 
 { #category : #testing }
 FamixEsopeImportingContext >> shouldImportSegadj [
+
 	<generated>
-	^ self shouldImport: FamixEsopeSegadj
+	^ self shouldImport: #Segadj
 ]
 
 { #category : #testing }
 FamixEsopeImportingContext >> shouldImportSegdes [
+
 	<generated>
-	^ self shouldImport: FamixEsopeSegdes
+	^ self shouldImport: #Segdes
 ]
 
 { #category : #testing }
 FamixEsopeImportingContext >> shouldImportSegini [
+
 	<generated>
-	^ self shouldImport: FamixEsopeSegini
+	^ self shouldImport: #Segini
 ]
 
 { #category : #testing }
 FamixEsopeImportingContext >> shouldImportSegment [
+
 	<generated>
-	^ self shouldImport: FamixEsopeSegment
+	^ self shouldImport: #Segment
 ]
 
 { #category : #testing }
-FamixEsopeImportingContext >> shouldImportSegmentUse [
+FamixEsopeImportingContext >> shouldImportSegmentCommand [
+
 	<generated>
-	^ self shouldImport: FamixEsopeSegmentUse
+	^ self shouldImport: #SegmentCommand
 ]
 
 { #category : #testing }
 FamixEsopeImportingContext >> shouldImportSegsup [
+
 	<generated>
-	^ self shouldImport: FamixEsopeSegsup
+	^ self shouldImport: #Segsup
 ]
 
 { #category : #testing }
 FamixEsopeImportingContext >> shouldImportUnknown [
+
 	<generated>
-	^ self shouldImport: FamixEsopeUnknown
+	^ self shouldImport: #Unknown
 ]

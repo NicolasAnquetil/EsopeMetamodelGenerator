@@ -36,7 +36,7 @@ FamixEsopeAttribute class >> annotation [
 	<FMClass: #Attribute super: #FamixEsopeFortranVariable>
 	<package: #'Famix-Esope-Entities'>
 	<generated>
-	^self
+	^ self
 ]
 
 { #category : #accessing }
